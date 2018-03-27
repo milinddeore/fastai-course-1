@@ -62,7 +62,8 @@ EXPOSE 8888
 
 # Clone fast.ai source
 RUN git clone -q https://github.com/fastai/fastai.git fastai-courses
-WORKDIR /home/$USERNAME/fastai-courses/deeplearning1/nbs
+WORKDIR /home/$USERNAME/fastai-courses/
+
 
 ENTRYPOINT ["/tini", "--"]
 CMD jupyter notebook --ip=0.0.0.0 --port=8888
