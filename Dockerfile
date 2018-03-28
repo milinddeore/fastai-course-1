@@ -1,10 +1,10 @@
 FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
 
-MAINTAINER Anurag Goel <deeprig@anur.ag>
+MAINTAINER Milind Deore <tomdeore@gmail.com>
 
-ARG PYTHON_VERSION=2.7
+ARG PYTHON_VERSION=3
 ARG CONDA_PYTHON_VERSION=2
-ARG CONDA_VERSION=4.2.12
+ARG CONDA_VERSION=4.4.10
 ARG CONDA_DIR=/opt/conda
 ARG TINI_VERSION=v0.13.2
 ARG USERNAME=docker
@@ -58,7 +58,7 @@ ENV PATH=$PATH:$CUDA_ROOT/bin:$HOME/bin
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_ROOT/lib64
 
 # Jupyter
-EXPOSE 8888
+EXPOSE 9999
 
 # Clone fast.ai source
 RUN git clone -q https://github.com/fastai/fastai.git fastai-courses
@@ -66,4 +66,4 @@ WORKDIR /home/$USERNAME/fastai-courses/
 
 
 ENTRYPOINT ["/tini", "--"]
-CMD jupyter notebook --ip=0.0.0.0 --port=8888
+CMD jupyter notebook --ip=0.0.0.0 --port=9999
